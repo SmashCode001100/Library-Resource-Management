@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Athena Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #1a2a3a;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --cream: #f9f5eb;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --neutral: #7f8c8d;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar-logo i {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .navbar-logo h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .navbar-links a:hover {
+            color: var(--accent);
+        }
+
+        .help-container {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .help-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .help-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .help-header p {
+            color: var(--neutral);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .help-search {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .help-search input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--light);
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .help-search input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .help-search i {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--neutral);
+            cursor: pointer;
+        }
+
+        .help-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .help-category {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .help-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .help-category i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .help-category h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .help-category p {
+            color: var(--neutral);
+            margin-bottom: 1.5rem;
+        }
+
+        .help-category a {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .help-category a:hover {
+            color: #c0392b;
+            transform: translateX(5px);
+        }
+
+        .help-category a i {
+            font-size: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .popular-topics {
+            margin-bottom: 3rem;
+        }
+
+        .popular-topics h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .topic-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .topic-item:hover {
+            background: white;
+            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .topic-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-item p {
+            color: var(--neutral);
+            font-size: 0.9rem;
+        }
+
+        .contact-support {
+            text-align: center;
+            padding: 3rem;
+            background: var(--light);
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .contact-support h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-support p {
+            color: var(--neutral);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--neutral);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .modal-btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .modal-btn-secondary {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navbar-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .help-container {
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+
+            .help-header h1 {
+                font-size: 2rem;
+            }
+
+            .help-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-book-open"></i>
+                <h1>Athena Library</h1>
+            </a>
+            <div class="navbar-links">
+                <a href="index.html">Home</a>
+                <a href="about.php">About</a>
+                <a href="contact.php">Contact</a>
+                <a href="login.php">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="help-container">
+        <div class="help-header">
+            <h1>Help Center</h1>
+            <p>Find answers to your questions and get support for your library needs</p>
+        </div>
+
+        <div class="help-search">
+            <input type="text" id="help-search-input" placeholder="Search for help...">
+            <i class="fas fa-search" id="search-icon"></i>
+        </div>
+
+        <div class="help-categories">
+            <div class="help-category" data-category="getting-started">
+                <i class="fas fa-book-reader"></i>
+                <h2>Getting Started</h2>
+                <p>Learn how to become a member, borrow books, and use our services</p>
+                <a href="#" class="category-link">View Guide <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="help-category" data-category="digital-services">
+                <i class="fas fa-laptop"></i>
+                <h2>Digital Services</h2>
+                <p>Access e-books, online resources, and digital library features</p>
+                <a href="#" class="category-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="help-category" data-category="account-help">
+                <i class="fas fa-question-circle"></i>
+                <h2>Account Help</h2>
+                <p>Manage your account, update information, and reset password</p>
+                <a href="#" class="category-link">Get Help <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="popular-topics">
+            <h2>Popular Topics</h2>
+            <div class="topics-grid">
+                <div class="topic-item" data-topic="borrowing">
+                    <h3>How to Borrow Books</h3>
+                    <p>Step-by-step guide to borrowing books from our library</p>
+                </div>
+                <div class="topic-item" data-topic="renewing">
+                    <h3>Renewing Books</h3>
+                    <p>Learn how to extend your book borrowing period</p>
+                </div>
+                <div class="topic-item" data-topic="digital-access">
+                    <h3>Digital Library Access</h3>
+                    <p>Access our digital resources and e-books</p>
+                </div>
+                <div class="topic-item" data-topic="library-card">
+                    <h3>Library Card</h3>
+                    <p>Information about getting and using your library card</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-support">
+            <h2>Need More Help?</h2>
+            <p>Our support team is available to assist you with any questions or issues you may have</p>
+            <a href="contact.php" class="contact-btn">Contact Support</a>
+        </div>
+    </div>
+
+    <!-- Modal for topic details -->
+    <div id="topic-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-title">Topic Title</h2>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <p>Topic content will be displayed here.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="modal-close">Close</button>
+                <button class="modal-btn modal-btn-primary" id="modal-contact">Contact Support</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="help.html">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Borrow Books</a></li>
+                    <li><a href="#">Digital Library</a></li>
+                    <li><a href="#">Book Clubs</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="help.html">Help Center</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Athena Library. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Topic content data
+        const topicContent = {
+            'borrowing': {
+                title: 'How to Borrow Books',
+                content: `
+                    <h3>Step 1: Create an Account</h3>
+                    <p>To borrow books from Athena Library, you need to create an account. Click on the "Sign Up" button in the navigation bar and fill out the registration form with your personal information.</p>
+                    
+                    <h3>Step 2: Log In to Your Account</h3>
+                    <p>Once your account is created, log in using your email and password.</p>
+                    
+                    <h3>Step 3: Browse the Library</h3>
+                    <p>Use the search bar to find books by title, author, or subject. You can also browse through categories or featured books on the homepage.</p>
+                    
+                    <h3>Step 4: Select a Book</h3>
+                    <p>Click on a book to view its details. You can read the description, check availability, and see other related information.</p>
+                    
+                    <h3>Step 5: Borrow the Book</h3>
+                    <p>Click the "Borrow" button on the book's page. The book will be added to your borrowed books list and will be available for you to read.</p>
+                    
+                    <h3>Step 6: Access Your Borrowed Books</h3>
+                    <p>You can access your borrowed books from your dashboard. They will be available for the standard borrowing period.</p>
+                    
+                    <h3>Need More Help?</h3>
+                    <p>If you encounter any issues during the borrowing process, please contact our support team for assistance.</p>
+                `
+            },
+            'renewing': {
+                title: 'Renewing Books',
+                content: `
+                    <h3>How to Renew Your Books</h3>
+                    <p>You can renew your borrowed books to extend the borrowing period. Here's how to do it:</p>
+                    
+                    <h3>Step 1: Log In to Your Account</h3>
+                    <p>Access your account by logging in with your credentials.</p>
+                    
+                    <h3>Step 2: Go to Your Borrowed Books</h3>
+                    <p>Navigate to your dashboard and find the "Borrowed Books" section.</p>
+                    
+                    <h3>Step 3: Select the Book to Renew</h3>
+                    <p>Find the book you want to renew and click on it.</p>
+                    
+                    <h3>Step 4: Click the Renew Button</h3>
+                    <p>On the book's page, you'll see a "Renew" button. Click it to extend the borrowing period.</p>
+                    
+                    <h3>Important Notes:</h3>
+                    <ul>
+                        <li>Books can be renewed up to 3 times.</li>
+                        <li>If another user has requested the book, renewal may not be possible.</li>
+                        <li>The renewal period is the same as the initial borrowing period.</li>
+                    </ul>
+                    
+                    <h3>Need Assistance?</h3>
+                    <p>If you're having trouble renewing your books, please contact our support team.</p>
+                `
+            },
+            'digital-access': {
+                title: 'Digital Library Access',
+                content: `
+                    <h3>Accessing Our Digital Resources</h3>
+                    <p>Athena Library offers a wide range of digital resources, including e-books, audiobooks, and online databases. Here's how to access them:</p>
+                    
+                    <h3>Step 1: Log In to Your Account</h3>
+                    <p>Use your library account credentials to log in.</p>
+                    
+                    <h3>Step 2: Navigate to Digital Library</h3>
+                    <p>From your dashboard, click on the "Digital Library" section.</p>
+                    
+                    <h3>Step 3: Browse Digital Resources</h3>
+                    <p>You can browse by category, search for specific titles, or explore featured digital content.</p>
+                    
+                    <h3>Step 4: Access the Content</h3>
+                    <p>Click on any digital resource to access it. Some content may be available for download, while others can be read or listened to directly in your browser.</p>
+                    
+                    <h3>Compatible Devices</h3>
+                    <p>Our digital library is compatible with most devices, including:</p>
+                    <ul>
+                        <li>Desktop and laptop computers</li>
+                        <li>Tablets (iOS and Android)</li>
+                        <li>Smartphones</li>
+                        <li>E-readers (with web browser capability)</li>
+                    </ul>
+                    
+                    <h3>Technical Support</h3>
+                    <p>If you encounter any technical issues while accessing digital resources, please contact our technical support team.</p>
+                `
+            },
+            'library-card': {
+                title: 'Library Card Information',
+                content: `
+                    <h3>Getting Your Library Card</h3>
+                    <p>Your library card is your key to accessing all of Athena Library's resources. Here's what you need to know:</p>
+                    
+                    <h3>How to Get a Library Card</h3>
+                    <p>When you create an account with Athena Library, a digital library card is automatically generated for you. You can access it from your dashboard.</p>
+                    
+                    <h3>Using Your Library Card</h3>
+                    <p>Your library card number is your unique identifier in our system. You'll need it to:</p>
+                    <ul>
+                        <li>Borrow physical books</li>
+                        <li>Access digital resources</li>
+                        <li>Use library computers</li>
+                        <li>Participate in library programs</li>
+                    </ul>
+                    
+                    <h3>Replacing a Lost Card</h3>
+                    <p>If you've lost access to your account or need to reset your library card:</p>
+                    <ol>
+                        <li>Go to the login page</li>
+                        <li>Click on "Forgot Password"</li>
+                        <li>Follow the instructions to reset your account</li>
+                    </ol>
+                    
+                    <h3>Card Expiration</h3>
+                    <p>Library cards do not expire as long as your account remains active. To keep your account active, simply log in at least once every 12 months.</p>
+                    
+                    <h3>Need Help?</h3>
+                    <p>If you're having trouble with your library card, please contact our support team for assistance.</p>
+                `
+            }
+        };
+
+        // Category content data
+        const categoryContent = {
+            'getting-started': {
+                title: 'Getting Started with Athena Library',
+                content: `
+                    <h3>Welcome to Athena Library!</h3>
+                    <p>We're excited to have you join our community of readers. This guide will help you get started with using our library services.</p>
+                    
+                    <h3>Creating Your Account</h3>
+                    <p>To access our library services, you need to create an account:</p>
+                    <ol>
+                        <li>Click on the "Sign Up" button in the navigation bar</li>
+                        <li>Fill out the registration form with your personal information</li>
+                        <li>Verify your email address</li>
+                        <li>Set up your password</li>
+                    </ol>
+                    
+                    <h3>Logging In</h3>
+                    <p>Once your account is created, you can log in using your email and password. After logging in, you'll have access to your personal dashboard where you can manage your borrowed books, saved items, and account settings.</p>
+                    
+                    <h3>Browsing the Library</h3>
+                    <p>Our library offers a wide range of books across various genres and subjects. You can browse books by:</p>
+                    <ul>
+                        <li>Using the search bar to find specific titles, authors, or subjects</li>
+                        <li>Exploring categories from the homepage</li>
+                        <li>Checking out featured and new arrivals</li>
+                    </ul>
+                    
+                    <h3>Borrowing Books</h3>
+                    <p>To borrow a book:</p>
+                    <ol>
+                        <li>Find a book you're interested in</li>
+                        <li>Click on the book to view its details</li>
+                        <li>Click the "Borrow" button</li>
+                        <li>The book will be added to your borrowed books list</li>
+                    </ol>
+                    
+                    <h3>Managing Your Account</h3>
+                    <p>From your dashboard, you can:</p>
+                    <ul>
+                        <li>View and manage your borrowed books</li>
+                        <li>Save books for later</li>
+                        <li>Update your personal information</li>
+                        <li>Change your password</li>
+                    </ul>
+                    
+                    <h3>Need Help?</h3>
+                    <p>If you have any questions or need assistance, our support team is here to help. You can contact us through the Help Center or the Contact page.</p>
+                `
+            },
+            'digital-services': {
+                title: 'Digital Services at Athena Library',
+                content: `
+                    <h3>Our Digital Services</h3>
+                    <p>Athena Library offers a comprehensive range of digital services to enhance your reading experience. Here's what you can access:</p>
+                    
+                    <h3>E-Books</h3>
+                    <p>Our e-book collection includes thousands of titles across various genres. You can:</p>
+                    <ul>
+                        <li>Read e-books directly in your browser</li>
+                        <li>Download e-books for offline reading</li>
+                        <li>Sync your reading progress across devices</li>
+                        <li>Highlight and take notes</li>
+                    </ul>
+                    
+                    <h3>Audiobooks</h3>
+                    <p>Listen to professionally narrated audiobooks on your computer or mobile device. Features include:</p>
+                    <ul>
+                        <li>Adjustable playback speed</li>
+                        <li>Bookmarking capability</li>
+                        <li>Offline listening</li>
+                        <li>Cross-device synchronization</li>
+                    </ul>
+                    
+                    <h3>Online Databases</h3>
+                    <p>Access premium research databases and academic journals, including:</p>
+                    <ul>
+                        <li>Academic research papers</li>
+                        <li>Newspaper archives</li>
+                        <li>Specialized subject databases</li>
+                        <li>Reference materials</li>
+                    </ul>
+                    
+                    <h3>Digital Magazines</h3>
+                    <p>Browse and read current and back issues of popular magazines.</p>
+                    
+                    <h3>How to Access Digital Services</h3>
+                    <p>To access our digital services:</p>
+                    <ol>
+                        <li>Log in to your account</li>
+                        <li>Navigate to the "Digital Library" section</li>
+                        <li>Browse or search for digital content</li>
+                        <li>Click on any item to access it</li>
+                    </ol>
+                    
+                    <h3>Technical Requirements</h3>
+                    <p>Our digital services are compatible with most modern devices and browsers. For the best experience, we recommend:</p>
+                    <ul>
+                        <li>Updated web browsers (Chrome, Firefox, Safari, Edge)</li>
+                        <li>Stable internet connection</li>
+                        <li>For e-books: e-reader apps like Kindle, Nook, or Kobo</li>
+                        <li>For audiobooks: headphones or speakers</li>
+                    </ul>
+                    
+                    <h3>Need Help with Digital Services?</h3>
+                    <p>If you encounter any issues with our digital services, please contact our technical support team for assistance.</p>
+                `
+            },
+            'account-help': {
+                title: 'Account Help and Management',
+                content: `
+                    <h3>Managing Your Athena Library Account</h3>
+                    <p>Your account is your gateway to all of Athena Library's services. Here's how to manage it effectively:</p>
+                    
+                    <h3>Updating Your Information</h3>
+                    <p>To update your personal information:</p>
+                    <ol>
+                        <li>Log in to your account</li>
+                        <li>Go to your profile settings</li>
+                        <li>Edit your information as needed</li>
+                        <li>Click "Save Changes" to update</li>
+                    </ol>
+                    
+                    <h3>Changing Your Password</h3>
+                    <p>To change your password:</p>
+                    <ol>
+                        <li>Log in to your account</li>
+                        <li>Go to your profile settings</li>
+                        <li>Click on "Change Password"</li>
+                        <li>Enter your current password and your new password</li>
+                        <li>Click "Update Password" to save changes</li>
+                    </ol>
+                    
+                    <h3>Resetting a Forgotten Password</h3>
+                    <p>If you've forgotten your password:</p>
+                    <ol>
+                        <li>Go to the login page</li>
+                        <li>Click on "Forgot Password"</li>
+                        <li>Enter your email address</li>
+                        <li>Check your email for a password reset link</li>
+                        <li>Follow the instructions to create a new password</li>
+                    </ol>
+                    
+                    <h3>Account Security</h3>
+                    <p>To keep your account secure:</p>
+                    <ul>
+                        <li>Use a strong, unique password</li>
+                        <li>Never share your login credentials</li>
+                        <li>Log out when using public computers</li>
+                        <li>Enable two-factor authentication if available</li>
+                    </ul>
+                    
+                    <h3>Deleting Your Account</h3>
+                    <p>If you wish to delete your account:</p>
+                    <ol>
+                        <li>Log in to your account</li>
+                        <li>Go to your profile settings</li>
+                        <li>Scroll to the bottom and click "Delete Account"</li>
+                        <li>Confirm your decision</li>
+                    </ol>
+                    <p>Please note that deleting your account is permanent and will remove all your saved data, including borrowed books and bookmarks.</p>
+                    
+                    <h3>Need Additional Help?</h3>
+                    <p>If you're experiencing issues with your account, please contact our support team for assistance.</p>
+                `
+            }
+        };
+
+        // DOM Elements
+        const searchInput = document.getElementById('help-search-input');
+        const searchIcon = document.getElementById('search-icon');
+        const topicItems = document.querySelectorAll('.topic-item');
+        const helpCategories = document.querySelectorAll('.help-category');
+        const modal = document.getElementById('topic-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const closeModal = document.querySelector('.close-modal');
+        const modalCloseBtn = document.getElementById('modal-close');
+        const modalContactBtn = document.getElementById('modal-contact');
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Search in topics
+            topicItems.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Search in categories
+            helpCategories.forEach(category => {
+                const title = category.querySelector('h2').textContent.toLowerCase();
+                const description = category.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        });
+
+        // Search icon click
+        searchIcon.addEventListener('click', () => {
+            searchInput.focus();
+        });
+
+        // Topic item click
+        topicItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const topicId = item.getAttribute('data-topic');
+                const topic = topicContent[topicId];
+                
+                if (topic) {
+                    modalTitle.textContent = topic.title;
+                    modalBody.innerHTML = topic.content;
+                    modal.style.display = 'block';
+                }
+            });
+        });
+
+        // Category click
+        helpCategories.forEach(category => {
+            category.addEventListener('click', () => {
+                const categoryId = category.getAttribute('data-category');
+                const categoryData = categoryContent[categoryId];
+                
+                if (categoryData) {
+                    modalTitle.textContent = categoryData.title;
+                    modalBody.innerHTML = categoryData.content;
+                    modal.style.display = 'block';
+                }
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modalCloseBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Contact support button in modal
+        modalContactBtn.addEventListener('click', () => {
+            window.location.href = 'contact.php';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Contact support button
+        const contactBtn = document.querySelector('.contact-btn');
+        contactBtn.addEventListener('click', (e) => {
+            // If it's a link, let it navigate naturally
+            if (contactBtn.getAttribute('href')) {
+                return;
+            }
+            
+            // Otherwise, show a confirmation
+            if (confirm('Would you like to contact our support team?')) {
+                window.location.href = 'contact.php';
+            }
+        });
+    </script>
+</body>
+</html>

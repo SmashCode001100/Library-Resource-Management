@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Athena Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #1a2a3a;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --cream: #f9f5eb;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --neutral: #7f8c8d;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .faq-header p {
+            color: var(--neutral);
+            font-size: 1.1rem;
+        }
+
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-section h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--light);
+            transition: var(--transition);
+        }
+
+        .faq-question h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .faq-question i {
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-question {
+            background: var(--accent);
+        }
+
+        .faq-item.active .faq-question h3,
+        .faq-item.active .faq-question i {
+            color: white;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .contact-support {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 10px;
+        }
+
+        .contact-support h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-support p {
+            color: var(--neutral);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .contact-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .faq-container {
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+
+            .faq-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <div class="faq-header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our library services</p>
+        </div>
+
+        <div class="faq-section">
+            <h2>General Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I become a member?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>To become a member, simply visit our registration page and fill out the required information. You'll need a valid email address and government-issued ID for verification.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What are the library hours?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Our library is open Monday to Friday from 9:00 AM to 8:00 PM, and Saturday to Sunday from 10:00 AM to 6:00 PM. We are closed on public holidays.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Borrowing Books</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How many books can I borrow at once?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Regular members can borrow up to 5 books at a time for a period of 14 days. Premium members can borrow up to 10 books for 21 days.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I renew my borrowed books?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can renew your books up to 2 times, provided there are no holds on the items. You can renew online through your account or by visiting the library.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Digital Services</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you offer e-books?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we have a growing collection of e-books available through our digital platform. You can access them using your library card number and PIN.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I access online resources?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>All online resources are accessible through your library account. Simply log in with your credentials to access our digital collection, research databases, and more.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-support">
+            <h2>Still have questions?</h2>
+            <p>Our support team is here to help you</p>
+            <a href="contact.php" class="contact-btn">Contact Support</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
