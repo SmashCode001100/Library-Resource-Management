@@ -1,0 +1,10 @@
+.git
+node_modules
+.env
+.htaccess
+*.sql
+README.md
+setup_database.php
+check_tables.php
+create_tables.sql
+database.sql

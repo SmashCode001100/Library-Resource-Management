@@ -991,7 +991,7 @@
             <div class="footer-links-section">
                 <h3 class="footer-title">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php" class="nav-link">Home</a></li>
                     <li><a href="about.php">About Us</a></li>
                     <li><a href="contact.php">Contact</a></li>
                 </ul>

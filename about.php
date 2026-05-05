@@ -433,10 +433,10 @@ session_start();
                 </a>
                 
                 <div class="nav-links">
-                    <a href="<?php echo isset($_SESSION['user_id']) ? 'dashboard.php' : 'index.html'; ?>" class="nav-link">
+                    <a href="<?php echo isset($_SESSION['user_id']) ? 'dashboard.php' : 'index.php'; ?>" class="nav-link">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.php" class="nav-link">Home</a>
                     <a href="about.php" class="nav-link">About</a>
                     <a href="contact.php" class="nav-link">Contact</a>
                 </div>
